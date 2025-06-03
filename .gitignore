@@ -9,7 +9,7 @@ backend/__pycache__/
 *.pyc
 
 # Environment
-.env
+backend/.env
 
 # OS-specific
 .DS_Store
