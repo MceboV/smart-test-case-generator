@@ -7,7 +7,7 @@ function App() {
 
   const generateTestCases = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/generate', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/generate`, {
         user_message: input
       });
       setTestCases(response.data);
