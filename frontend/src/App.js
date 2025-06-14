@@ -67,7 +67,7 @@ function App() {
 
   return (
     <div className="App" style={{ padding: 20 }}>
-      <h2>Smart AI Test Case Generator</h2>
+      <h2>Hi, I am your assistant analyst.</h2>
 
       <textarea
         value={input}
