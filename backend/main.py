@@ -33,7 +33,14 @@ class Prompt(BaseModel):
 @app.post("/generate")
 async def generate_test_cases(prompt: Prompt):
     system_text = open("system.txt", encoding="utf8").read().strip()
-    user_text = prompt.user_message
+    user_text = prompt.user_message.strip()
+
+    # Validate user input below
+    if not user_text.lower().startswith("as a user"):
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid input format. Please start with 'As a user...'"
+        )
 
     messages = [
         {"role": "system", "content": system_text},
@@ -48,10 +55,13 @@ async def generate_test_cases(prompt: Prompt):
             max_tokens=800
         )
         response_text = response.choices[0].message.content.strip()
+
         try:
             parsed = json.loads(response_text)
             return parsed
         except json.JSONDecodeError:
             raise HTTPException(status_code=500, detail="Invalid JSON response from model")
+
     except Exception as ex:
         raise HTTPException(status_code=500, detail=str(ex))
+
