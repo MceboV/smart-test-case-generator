@@ -83,7 +83,7 @@ function App() {
       
       <div style={{ margin: '10px 0' }}>
         <label htmlFor="screenshot-upload" style={{ marginRight: '10px' }}>
-          Upload System Screenshot (optional):
+          Upload System Screenshot for the tool to learn (optional):
         </label>
         <input
           id="screenshot-upload"
